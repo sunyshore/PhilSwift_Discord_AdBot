@@ -3,6 +3,8 @@ from discord.ext import commands
 import time
 import random
 
+TOKEN = ''
+
 client = commands.Bot(command_prefix = '!')
 adDict = {("flex tape", 'tape', 'flex', 'repair', 'seal', 'patch', 'bond', 'broken', 'cracks', 'leaks'): "",
           ("raid", 'game', 'strategy'): "",
@@ -12,7 +14,11 @@ adDict = {("flex tape", 'tape', 'flex', 'repair', 'seal', 'patch', 'bond', 'brok
           ("honey", "saving", 'money'):"",
           ("penis", 'dick', 'ball', 'nut', 'bollock', 'hair', 'pubic', 'cock', 'schlong'): "",
           ("vpn", 'safety'): "",
-          ("fortnite", 'trash'): ""}
+          ("fortnite", 'trash'): "",
+          ("earphones", "earbuds", "airpods", 'music'): "",
+          ('books', 'audible', 'book'): "",
+          ('kitchen', 'gun', 'cleaning'): "",
+          ('shamwow', 'wow', 'sponge', 'towel'): ""}
 adList = ["flex tape", "raid", "squarespace", "shave"]
 ad = open("adTranscript", "r", encoding = "utf8")
 roastFile = open("roastTranscript", "r", encoding = "utf8")
@@ -42,6 +48,9 @@ async def on_member_remove(member, ctx):
 @client.event
 async def on_message(message):
     if message.author == client.user:
+        return
+
+    if message.author.bot:
         return
 
     await client.process_commands(message)
@@ -81,4 +90,4 @@ async def randomad(ctx):
     time.sleep(1)
     await ctx.send(adDict[random.choice(adList)])
 
-client.run('NzQ1NTQwOTczNDc1Mzk3NjUz.XzzRIw.fJCVJ6zIKxDsu6vcL3ivj9oHzXw')
+client.run(TOKEN)
