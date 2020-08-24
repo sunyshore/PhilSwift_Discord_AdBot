@@ -3,9 +3,12 @@ from discord.ext import commands
 import time
 import random
 
-TOKEN = ''
+TOKEN = 'NzQ1NTQwOTczNDc1Mzk3NjUz.XzzRIw.To17EaFegfIOdeV4K17HdiG0YWM'
 
 client = commands.Bot(command_prefix = '!')
+adDict = {}
+
+"""
 adDict = {("flex tape", 'tape', 'flex', 'repair', 'seal', 'patch', 'bond', 'broken', 'cracks', 'leaks'): "",
           ("raid", 'game', 'strategy'): "",
           ("squarespace", 'website'): "",
@@ -16,9 +19,11 @@ adDict = {("flex tape", 'tape', 'flex', 'repair', 'seal', 'patch', 'bond', 'brok
           ("vpn", 'safety'): "",
           ("fortnite", 'trash'): "",
           ("earphones", "earbuds", "airpods", 'music'): "",
-          ('books', 'audible', 'book'): "",
+          ('audible', 'book'): "",
           ('kitchen', 'gun', 'cleaning'): "",
           ('shamwow', 'wow', 'sponge', 'towel'): ""}
+"""
+
 adList = ["flex tape", "raid", "squarespace", "shave"]
 ad = open("adTranscript", "r", encoding = "utf8")
 roastFile = open("roastTranscript", "r", encoding = "utf8")
@@ -28,9 +33,18 @@ wrong = []
 
 @client.event
 async def on_ready():
-
+    """
     for sponsor in adDict:
         adDict[sponsor] = ad.readline()
+    """
+
+    for line in ad:
+        temp = line.split("$", 1)
+        key = temp[0].split(" ")
+        tuplekey = tuple(key)
+        print(tuplekey)
+        adDict[tuplekey] = temp[1][:-1]
+
     for roasts in roastFile:
         wrong.append(roasts)
     print("Hi, Phil Swift here")
