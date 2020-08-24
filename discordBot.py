@@ -3,7 +3,7 @@ from discord.ext import commands
 import time
 import random
 
-TOKEN = 'NzQ1NTQwOTczNDc1Mzk3NjUz.XzzRIw.To17EaFegfIOdeV4K17HdiG0YWM'
+TOKEN = ''
 
 client = commands.Bot(command_prefix = '!')
 adDict = {}
