@@ -42,7 +42,7 @@ async def on_ready():
         temp = line.split("$", 1)
         key = temp[0].split(" ")
         tuplekey = tuple(key)
-        print(tuplekey)
+        #print(tuplekey)
         adDict[tuplekey] = temp[1][:-1]
 
     for roasts in roastFile:
